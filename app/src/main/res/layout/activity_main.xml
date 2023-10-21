@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52"
+        app:layout_constraintVertical_bias="0.44"
         tools:text="Add" />
 
     <Button
@@ -99,52 +99,64 @@
         android:id="@+id/chkbox_opt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Small = 50"
+        android:text="Small = 20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.222"
-        tools:text="Small = 50" />
+        tools:text="Small = 20" />
 
     <CheckBox
         android:id="@+id/chkbox_opt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large = 50"
+        android:text="Large = 70"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.363"
-        tools:text="Large = 50" />
+        tools:text="Large = 70" />
 
     <EditText
         android:id="@+id/input_payment"
         android:layout_width="278dp"
         android:layout_height="48dp"
         android:ems="10"
+        android:hint="Enter Payment"
         android:inputType="number"
-        android:text="Enter Payment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44"
+        app:layout_constraintVertical_bias="0.83"
         tools:text="Enter Payment" />
 
     <TextView
         android:id="@+id/text_order"
         android:layout_width="261dp"
         android:layout_height="135dp"
-        android:text="Order View"
+        android:text="Order:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62"
+        tools:text="Order:" />
+
+    <TextView
+        android:id="@+id/text_total"
+        android:layout_width="262dp"
+        android:layout_height="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78"
-        tools:text="Order View" />
+        app:layout_constraintVertical_bias="0.75"
+        tools:text="Total:" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

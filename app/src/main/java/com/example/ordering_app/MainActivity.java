@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     CheckBox chkbox_item1, chkbox_item2, chkbox_item3;
@@ -19,10 +20,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_order = findViewById(R.id.btn_add);
+        final int total[] = {0};
+
+        Button btn_add = findViewById(R.id.btn_add);
+        Button btn_order = findViewById(R.id.btn_order);
         EditText input_payment = findViewById(R.id.input_payment);
         TextView text_order = findViewById(R.id.text_order);
         text_order.append("\n");
+        TextView text_total = findViewById(R.id.text_total);
+        text_total.append("Total: ");
 
         chkbox_item1 = findViewById(R.id.chkbox_item1);
         chkbox_item2 = findViewById(R.id.chkbox_item2);
@@ -34,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
         CheckBox items[] = {chkbox_item1, chkbox_item2, chkbox_item3};
         CheckBox opts[] = {chkbox_opt1, chkbox_opt2, chkbox_opt3};
+        int price[] = {20, 50, 70};
 
         disable_checkboxes();
 
-        btn_order.setOnClickListener(new View.OnClickListener() {
+        btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String payment = input_payment.getText().toString();
@@ -45,15 +52,36 @@ public class MainActivity extends AppCompatActivity {
                     if (items[i].isChecked()) {
                         text_order.append(items[i].getText());
                         text_order.append(": ");
+
                         for (int j = 0; j < 3; ++j) {
                             if (opts[j].isChecked()) {
                                 text_order.append(opts[j].getText());
                                 text_order.append("\n");
+
+                                total[0] += price[j];
+
+                                text_total.setText("Total: ");
+                                text_total.append(Integer.toString(total[0]));
                                 break;
                             }
                         }
                         break;
                     }
+                }
+            }
+        });
+
+        btn_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int payment = Integer.parseInt(input_payment.getText().toString());
+                String change = Integer.toString(payment - total[0]);
+                if (payment < total[0]) {
+                    Toast.makeText(getApplicationContext(), "Insufficient Pay", Toast.LENGTH_LONG).show();
+                } else if (payment > total[0]) {
+                    Toast.makeText(getApplicationContext(), "Thank You for purchasing, Change: " + change, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Thank You for purchasing", Toast.LENGTH_LONG).show();
                 }
             }
         });
